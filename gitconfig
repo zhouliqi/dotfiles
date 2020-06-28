@@ -4,8 +4,8 @@
 	required = true
 	clean = git-lfs clean -- %f
 [user]
-	name = hujinming
-	email = jinminghu233@qq.com
+	name = Jinming Hu
+	email = 438600480@qq.com
 [alias]
 	br = branch
 	ci = commit
