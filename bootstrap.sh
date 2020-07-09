@@ -67,24 +67,10 @@ for file in $files; do
 done
 
 
-if [ "$(hostname)" == "myServer" ]; then 
-	true;
-fi
-
-if [ -f "$HOME/.ssh/config_local" ]; then
-	rm ~/."ssh/config"
-	ln -fns "$HOME/.ssh/config_local" ~/.ssh/config
-fi
-
-
 cd "$ZSH_CUSTOM_PLUG/autojump" || exit 
 # ./install.py
 
 ~/.fzf/install
 
-rm ~/.zcompdump*
-rm ~/.zplug/zcompdump*
 
-vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
-vim -u NONE -c "helptags ~/.vim/pack/vendor/start/vim-fugitive/doc" -c q
-vim -u NONE -c "helptags ~/.vim/pack/vendor/start/vim-rhubarb/doc" -c q
+
