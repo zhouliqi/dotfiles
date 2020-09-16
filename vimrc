@@ -121,15 +121,15 @@ set mouse+=a
 " bad habit. The former is enforceable through a .vimrc, while we don't know
 " how to prevent the latter.
 " Do this in normal mode...
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
+" nnoremap <Left>  :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up>    :echoe "Use k"<CR>
+" nnoremap <Down>  :echoe "Use j"<CR>
 " ...and in insert mode
-inoremap <Left>  <ESC>:echoe "Use h"<CR>
-inoremap <Right> <ESC>:echoe "Use l"<CR>
-inoremap <Up>    <ESC>:echoe "Use k"<CR>
-inoremap <Down>  <ESC>:echoe "Use j"<CR>
+" inoremap <Left>  <ESC>:echoe "Use h"<CR>
+" inoremap <Right> <ESC>:echoe "Use l"<CR>
+" inoremap <Up>    <ESC>:echoe "Use k"<CR>
+" inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
 " modify the upper limit of pasting to 500
 set viminfo='1000,<500
@@ -173,7 +173,7 @@ let g:ale_completion_enabled = 1
 set omnifunc=ale#completion#OmniFunc
 
 let @e = '^r"f>s": "f<C"'
-let @p = 'S{€ýaj@eA,j@ejS},'
+let @p = 'S{ï¿½ï¿½aj@eA,j@ejS},'
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
