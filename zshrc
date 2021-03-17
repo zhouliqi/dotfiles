@@ -120,7 +120,7 @@ if ! zplug check --verbose; then
     echo 'Run "zplug install" to install'
 fi
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load
 
 if [ -f ~/.zshrc_local ]; then
 	source ~/.zshrc_local
@@ -129,7 +129,6 @@ fi
 # Test if ~/.aliases exists and source it
 if [ -f ~/.aliases ]; then
     source ~/.aliases
-	echo "source aliases"
 fi
 
 AUTOJUMP="$ZSH/custom/plugins/autojump"
