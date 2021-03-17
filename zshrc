@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+source ~/.bash_profile
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -30,7 +30,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
@@ -98,3 +98,55 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# ZPlug configuration
+
+if [[ ! -f $HOME/.zplug/init.zsh ]] {
+	echo "ZPLUG not installed!!!"
+}
+source ~/.zplug/init.zsh
+
+OMZPLUGIN=("git" "python" "vi-mode")
+OMZCUSPLUGIN=("zsh-syntax-highlighting" "zsh-autosuggestions" "zsh-history-substring-search" "zsh-completions")
+
+for plug in "${OMZPLUGIN[@]}"
+do
+    zplug "$ZSH/plugins/$plug/$plug.plugin.zsh" , from:local
+done
+for plug in "${OMZCUSPLUGIN[@]}"
+do
+    zplug "$ZSH/custom/plugins/$plug/$plug.plugin.zsh" , from:local
+done
+if ! zplug check --verbose; then
+    echo 'Run "zplug install" to install'
+fi
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
+
+if [ -f ~/.zshrc_local ]; then
+	source ~/.zshrc_local
+fi
+
+# Test if ~/.aliases exists and source it
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+	echo "source aliases"
+fi
+
+AUTOJUMP="$ZSH/custom/plugins/autojump"
+if [[ ! -d ~/.autojump ]] {
+	echo "autojump not installed!!!"
+}
+
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
+if [[ ! -d $HOME/.fzf ]] {
+	echo "fzf not installed!!!"
+}
+
+# export CLICOLOR=1
+# export TERM=xterm-256color
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# source "$ZSH/custom/plugins/zsh-git-prompt/zshrc.sh"
