@@ -121,3 +121,9 @@ fi
 if [ -f ~/.aliases ]; then
     source ~/.aliases
 fi
+
+if [ -f ~/.bashrc_local ]; then
+    source ~/.bashrc_local
+fi
+
+

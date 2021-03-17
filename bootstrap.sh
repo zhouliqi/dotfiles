@@ -40,13 +40,21 @@ else
 fi
 }
 install_zsh
-git submodule update --init --recursive
 
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"           # dotfiles directory
 olddir=~/dotfiles_old      # old dotfiles backup directory
 echo "$dir"
 ZSH_CUSTOM_PLUG="oh-my-zsh/custom/plugins"
-files="bashrc bash_profile vimrc vim zshrc ssh/config gitconfig gitignore_global tmux.conf aliases prompt mybin zplug fzf $ZSH_CUSTOM_PLUG/autojump $ZSH_CUSTOM_PLUG/zsh-autosuggestions $ZSH_CUSTOM_PLUG/zsh-completions $ZSH_CUSTOM_PLUG/zsh-syntax-highlighting $ZSH_CUSTOM_PLUG/zsh-history-substring-search $ZSH_CUSTOM_PLUG/zsh-git-prompt"
+ZSH_PLUG="$ZSH_CUSTOM_PLUG/autojump $ZSH_CUSTOM_PLUG/zsh-autosuggestions $ZSH_CUSTOM_PLUG/zsh-completions $ZSH_CUSTOM_PLUG/zsh-syntax-highlighting $ZSH_CUSTOM_PLUG/zsh-history-substring-search $ZSH_CUSTOM_PLUG/zsh-git-prompt "
+submodules="zplug fzf "$ZSH_PLUG
+
+for file in $submodules; do
+	echo $file
+	git submodule update --init $file
+done
+
+
+files="bashrc bash_profile vimrc vim zshrc ssh/config gitconfig gitignore_global tmux.conf aliases prompt mybin zplug fzf "$ZSH_PLUG 
 
 # create dotfiles_old in homedir
 echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
@@ -68,9 +76,10 @@ done
 
 
 cd "$ZSH_CUSTOM_PLUG/autojump" || exit 
-# ./install.py
+./install.py
 
 ~/.fzf/install
 
-
+rm ~/.zcompdump*
+rm ~/.zplug/zcompdump*
 
