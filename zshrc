@@ -145,6 +145,8 @@ if [[ ! -d $HOME/.fzf ]] {
 # export CLICOLOR=1
 # export TERM=xterm-256color
 
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
