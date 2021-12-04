@@ -72,4 +72,5 @@ alias egrep='egrep --color=auto'
 
 # tmux
 alias tkill="tmux kill-session"
-
+alias tnew="tmux new -s"
+alias tatt="tmux attach -t"

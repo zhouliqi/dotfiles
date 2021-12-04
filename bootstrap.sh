@@ -1,8 +1,10 @@
 #!/bin/bash
-########################
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
 
-########## Variables
+# ==========================================================================================
+# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# ==========================================================================================
+
+# Variables
 
 # install all the submodules
 
@@ -39,6 +41,7 @@ else
     fi
 fi
 }
+
 install_zsh
 
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"           # dotfiles directory

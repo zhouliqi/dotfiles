@@ -116,14 +116,22 @@ if ! shopt -oq posix; then
   fi
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # Test if ~/.aliases exists and source it
 if [ -f ~/.aliases ]; then
     source ~/.aliases
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
 
 
+# user proxy
+# export http_proxy=http://127.0.0.1:8888
+# export https_proxy=http://127.0.0.1:8888
+
+# go environment
+# export GOROOT=/usr/local/go
+# export PATH=$GOROOT/bin:$PATH

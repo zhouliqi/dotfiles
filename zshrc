@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="ys"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -68,8 +68,14 @@ export UPDATE_ZSH_DAYS=13
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-# plugins=(zsh-autosuggestions)
+plugins=(
+	git
+	fzf
+	zsh-autosuggestions
+	zsh-completions
+	zsh-history-substring-search
+	zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -150,4 +156,10 @@ bindkey "^[[4~" end-of-line
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# source "$ZSH/custom/plugins/zsh-git-prompt/zshrc.sh"
+# use proxy
+# export http_proxy=http://127.0.0.1:8888
+# export https_proxy=http://127.0.0.1:8888
+
+# go environment
+# export GOROOT=/usr/local/go
+# export PATH=$GOROOT/bin:$PATH
