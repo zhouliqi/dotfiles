@@ -101,5 +101,24 @@ sudo apt install code
 
 ```bash
 sudo apt install flameshot  # Debian, Ubuntu-based distro
+
+# 设置快捷键截图
+# Setting -> Devices -> Keyboard -> +
+# name : Flameshot
+# Commander : flameshot gui
+```
+
+
+
+- 安装向日葵远程连接后需要配置
+
+```bash
+# 安装 LightDM（如果要用向日葵的话）
+sudo apt-get update
+sudo apt install lightdm
+# 在弹出的Configuring lightdm界面，选择lightdm，回车。重新启动服务器，成功显示界面
+
+# 切换回 gdm3: 执行下面命令，选择 gdm3
+sudo dpkg-reconfigure lightdm
 ```
 
