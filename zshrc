@@ -163,3 +163,21 @@ bindkey "^[[4~" end-of-line
 # go environment
 # export GOROOT=/usr/local/go
 # export PATH=$GOROOT/bin:$PATH
+
+#================================== ROS ======================================#
+#source /opt/ros/melodic/setup.zsh
+#source ~/catkin_ws/devel/setup.zsh
+
+# This is necessary to prevent some Qt-related errors (feel free to try to omit it)
+#export QT_X11_NO_MITSHM=1
+
+# Setup some more Gazebo-related environment variables
+#. ~/PX4-Autopilot/Tools/setup_gazebo.bash ~/PX4-Autopilot ~/PX4-Autopilot/build/px4_sitl_default
+
+# Add the Firmware directory to ROS_PACKAGE_PATH so that ROS can start PX4
+#export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/PX4-Autopilot
+
+# set gazebo models location
+# export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/PX4-Autopilot/Tools/sitl_gazebo/models
+#export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:~/catkin_ws/src/avoidance/avoidance/sim/models:~/catkin_ws/src/avoidance/avoidance/sim/worlds
+#=============================================================================#

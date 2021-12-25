@@ -1,23 +1,68 @@
+# ignore all compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.pyo
+
+
 # ignore all .a files
 *.a
 
 # but do track lib.a, even though you're ignoring .a files above
 !lib.a
 
-# ignore all .DS_Store files
+
+# ignore all packages
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.msi
+
+
+# ignore all Logs and databases
+*.log
+*.sql
+*.sqlite
+
+
+# ignore all OS generated files
 .DS_Store
 */.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
 
-# ignore VSCODE configuration
-*/.vscode
-.vscode
 
 # ignore all files in any directory named build
 # build/
 
-# ignore doc/notes.txt, but not doc/server/arch.txt
-# doc/*.txt
 
-# ignore all .pdf files in the doc/ directory and any of its subdirectories
-# doc/**/*.pdf
-*.pyc
+# ignore all temporary files
+*.bak
+*.swp
+*.swo
+*~
+*#
+
+
+# ignore all IDE files
+.idea
+.vscode
+*/.vscode
+.iml
+*.sublime-workspace
