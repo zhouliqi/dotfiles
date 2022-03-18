@@ -13,8 +13,7 @@ sudo apt update
 sudo apt install snapd
 
 sudo apt update
-sudo apt install vim git zsh curl ripgrep \
-    tmux htop tldr make cmake g++
+sudo apt install vim git zsh curl ripgrep tmux htop tldr make cmake g++
 
 # ubuntu 18.04 中，ripgrep 可能不能用 apt-get 安装，那么用 snap 安装
 sudo snap install ripgrep --classic
