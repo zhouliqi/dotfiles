@@ -54,6 +54,10 @@ dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"           # dotfiles directo
 olddir=~/dotfiles_old      # old dotfiles backup directory
 echo "$dir"
 
+printf "\n==============================================================================================================\n"
+printf "\n\t\t Ready to install plugins.\n"
+printf "\n==============================================================================================================\n"
+
 ZSH_CUSTOM_PLUG="oh-my-zsh/custom/plugins"
 ZSH_PLUG="$ZSH_CUSTOM_PLUG/autojump $ZSH_CUSTOM_PLUG/zsh-autosuggestions $ZSH_CUSTOM_PLUG/zsh-completions $ZSH_CUSTOM_PLUG/zsh-syntax-highlighting $ZSH_CUSTOM_PLUG/zsh-history-substring-search $ZSH_CUSTOM_PLUG/zsh-git-prompt "
 submodules="zplug fzf "$ZSH_PLUG
@@ -73,7 +77,7 @@ printf "\n======================================================================
 printf "\n\t\t Creating $olddir for backup of any existing dotfiles in ~ ...\n"
 printf "\n==============================================================================================================\n"
 mkdir -p $olddir
-printf "done"
+printf "done\n\n"
 
 
 # change to the dotfiles directory
@@ -81,7 +85,8 @@ printf "\n======================================================================
 printf "\n\t\t Changing to the $dir directory ...\n"
 printf "\n==============================================================================================================\n"
 cd "$dir" || exit
-printf "done"
+printf "done\n\n"
+
 
 printf "\n==============================================================================================================\n"
 printf "\n\t\t move any existing dotfiles in $HOME to dotfiles_old directory, then create \n"
@@ -92,13 +97,14 @@ for file in $files; do
     mv ~/."$file" ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
     ln -fns "$dir"/"$file" ~/."$file"
+    printf "\n"
 done
 
 printf "\n==============================================================================================================\n"
 printf "\n\t\t Changing to the $ZSH_CUSTOM_PLUG/autojump directory and install.\n"
 printf "\n==============================================================================================================\n"
 cd "$ZSH_CUSTOM_PLUG/autojump" || exit 
-./install.py
+python3 ./install.py
 
 printf "\n==============================================================================================================\n"
 printf "\n\t\t Now, Install fzf plugin\n"

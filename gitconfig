@@ -5,7 +5,7 @@
 	clean = git-lfs clean -- %f
 [user]
 	name = zhouliqi
-	email = zhou_liqi@126.com
+	email = zhouliqi1204@gmail.com
 [alias]
 	br = branch
 	ci = commit

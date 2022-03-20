@@ -157,8 +157,8 @@ bindkey "^[[4~" end-of-line
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # use proxy
-# export http_proxy=http://127.0.0.1:8888
-# export https_proxy=http://127.0.0.1:8888
+# export http_proxy=http://127.0.0.1:8889
+# export https_proxy=http://127.0.0.1:8889
 
 # go environment
 # export GOROOT=/usr/local/go
