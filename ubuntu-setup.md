@@ -44,6 +44,15 @@ StartupNotify=true
 /home/zhouliqi/v2ray/v2ray-linux-64/v2ray
 # 首选项 -> 内核设置 -> v2ray 资源目录
 /home/zhouliqi/v2ray/v2ray-linux-64
+
+# 1. 如果使用 vmess 协议, 则可以直接导入 vmess 链接，启动系统代理
+
+# 2. 如果使用 Trojan 协议, 那么
+# 首先前往: https://github.com/Qv2ray/QvPlugin-Trojan/releases/tag/v3.0.0 下载 linux 下的插件放到顶级 v2ray 目录下, 再运行
+cd ~/v2ray
+cp QvPlugin-Trojan.v3.0.0.linux-x64.so ~/.config/qv2ray/plugins
+
+# 重启后就可以在插件下面看到支持 Trojan 协议了,然后再导入 Trojan 链接
 ```
 
 

@@ -71,6 +71,7 @@ export UPDATE_ZSH_DAYS=13
 plugins=(
 	git
 	fzf
+	autojump
 	zsh-autosuggestions
 	zsh-completions
 	zsh-history-substring-search
