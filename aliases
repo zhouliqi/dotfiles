@@ -13,6 +13,8 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
+alias gnutime="/usr/bin/time"
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
@@ -40,7 +42,7 @@ alias dc='cd'
 # git aliases
 alias gst='git status'
 alias gc='git commit'
-alias gqa='git add .'
+alias undo='git reset --hard'
 alias glast='git last | head -1 | cut -f2- -d '\'' '\'' | xargs git show'
 
 alias v="vim"
@@ -74,3 +76,4 @@ alias egrep='egrep --color=auto'
 alias tkill="tmux kill-session"
 alias tnew="tmux new -s"
 alias tatt="tmux attach -t"
+alias tls="tmux ls"

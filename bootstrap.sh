@@ -12,7 +12,7 @@ install_zsh () {
     # Test to see if zshell is installed.  If it is:
     if [ -f /bin/zsh ] || [ -f /usr/bin/zsh ]; then
     	echo "zsh having been installed!!!"
-        # Install on-my-zsh
+        # Install oh-my-zsh
     	if [ ! -d "$HOME/.oh-my-zsh" ]; then
     		echo "install oh-my-zsh!!!"
     		sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -44,7 +44,7 @@ install_zsh () {
 }
 
 printf "\n==============================================================================================================\n"
-printf "\n\t\t Ready to install zsh, on-my-zsh and change shell to zsh if necessary.\n"
+printf "\n\t\t Ready to install zsh, oh-my-zsh and change shell to zsh if necessary.\n"
 printf "\n==============================================================================================================\n"
 
 install_zsh

@@ -9,7 +9,7 @@ sudo apt update
 sudo apt install snapd
 
 sudo apt update
-sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep
+sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep dstat
 
 # ubuntu 18.04 中，ripgrep 可能不能用 apt-get 安装，那么用 snap 安装
 sudo snap install ripgrep --classic
@@ -20,12 +20,11 @@ sudo snap install ripgrep --classic
 - Ubuntu 下安装 **v2ray** 客户端，科学上网
 
 ```bash
-cd ~
-mkdir v2ray && cd v2ray
+mkdir ~/v2ray && cd ~/v2ray
 mkdir v2ray-linux-64
 ```
 
-> 将 [v2ray](https://github.com/v2ray/v2ray-core/releases/tag/v4.28.2) 的内核文件下载到 `v2ray-linux-64` 目录下；将 [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases/tag/v2.7.0) 客户端下载到 `v2ray` 目录下
+> ​	将 [v2ray](https://github.com/v2ray/v2ray-core/releases/tag/v4.28.2) 的内核文件下载到 `v2ray-linux-64` 目录下；将 [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases/tag/v2.7.0) 客户端下载到 `v2ray` 目录下
 
 ```bash
 chmod +x Qv2ray-v2.7.0-linux-x64.AppImage
@@ -45,8 +44,6 @@ StartupNotify=true
 /home/zhouliqi/v2ray/v2ray-linux-64/v2ray
 # 首选项 -> 内核设置 -> v2ray 资源目录
 /home/zhouliqi/v2ray/v2ray-linux-64
-
-# 倒入 vmess 链接，启动系统代理 
 ```
 
 
@@ -63,7 +60,13 @@ ssh-keygen -t rsa -b 4096 -C "zhouliqi1204@gmail.com"
 
 # 将下面显示的东西添加到你的 github -> setting -> SSH keys 中
 cat ~/.ssh/id_rsa.pub
-ssh -T git@github.com # 测试
+
+# 测试是否可以连接到你的 github 账户
+ssh -T git@github.com
+
+# 删除/添加 github 仓库地址
+git remote rm origin
+git remote add origin [address]
 ```
 
 
@@ -77,13 +80,13 @@ cd ~
 git clone git@github.com:zhouliqi/dotfiles.git
 cd dotfiles
 
-# 记得设置终端走代理，不然下载插件的时候可能会失败(和 Qv2ray 中的端口对应)
+# 记得设置终端走代理，不然下载插件的时候可能会失败 (和 Qv2ray 中的端口对应)
 export http_proxy=http://127.0.0.1:8889
 export https_proxy=http://127.0.0.1:8889
 
 ./bootstrap.sh
 
-# 如果 on-my-zsh 没安装，则先回安装 on-my-zsh，然后再执行一遍 bootstrap.sh 脚本
+# 如果 oh-my-zsh 没安装，则先会安装 oh-my-zsh，然后再执行一遍 bootstrap.sh 脚本
 
 source .zshrc
 ```
@@ -93,7 +96,7 @@ source .zshrc
 ```bash
 # 如果会出现: /usr/bin/env: ‘python’: No such file or directory 
 whereis python3
-#Then we create a symlink to it:
+# Then we create a symlink to it:
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
 
@@ -127,18 +130,24 @@ sudo apt-get remove <package_name>
 
 
 
-### 常用软件
+### 常用工具
 
 - 安装 **Google Chrome**
 
 ```bash
 cd ~
 
-# Use wget to download the latest Google Chrome .deb package
+# use wget to download the latest Google Chrome .deb package
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
-# Installing Google Chrome
+# installing Google Chrome
 sudo apt install ./google-chrome-stable_current_amd64.deb
+
+# update Chrome in Ubuntu 20.04
+sudo apt-get update
+sudo apt-get --only-upgrade install google-chrome-stable
+
+# restart Chrome
 ```
 
 
@@ -154,12 +163,43 @@ sudo snap install sublime-text --classic
 - 安装 **Visual Studio Code**
 
 ```bash
+# 1. use apt to install vscode
 sudo apt update
 sudo apt install software-properties-common apt-transport-https wget
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 sudo apt update
 sudo apt install code
+
+# 2. or use snap to install vscode
+sudo snap install --classic code
+```
+
+
+
+- Go 语言环境
+
+```bash
+cd ~
+sudo wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
+
+vim ~/.zshrc
+
+# 添加 go 的环境变量
+export GOROOT=/usr/local/go
+export PATH=$GOROOT/bin:$PATH
+source ~/.zshrc
+```
+
+
+
+- 安装 GoLand
+
+```bash
+# 前往 JetBrains 官网下载 GoLand 保存的 ~ 目录
+cd ~
+sudo tar xzf goland-2020.1.4.tar.gz -C /opt
 ```
 
 
@@ -189,3 +229,23 @@ sudo apt install lightdm
 sudo dpkg-reconfigure lightdm
 ```
 
+
+
+### 终端工具
+
+- dstat
+
+```bash
+cd ~
+sudo apt-get install dstat
+
+# -c: for CPU stats
+# -t: for timestamp
+# -d: for disk stats
+# --disk-util: for disk utilization
+# --disk-tps: for disk transactions (I/O requests) per second
+# number: The display is updated every  second
+
+# e.g. nvme0n1p2 is SSD name
+dstat -ctdD nvme0n1p2 --disk-tps 2
+```
