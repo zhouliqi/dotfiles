@@ -242,7 +242,38 @@ sudo dpkg-reconfigure lightdm
 
 ### 终端工具
 
-- dstat
+- `tmux` 配置
+
+```bash
+# To install Tmux Resurrect, it is recommended to install Tmux Plugin Manager first
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+#================== Then we add new plugin to ~/.tmux.conf ==================
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
+#============================================================================
+
+# type this in terminal if tmux is already running
+tmux source ~/.tmux.conf
+
+# Final Press prefix + I (capital i, as in Install) to fetch the plugin.
+```
+
+> ​	在 tmux 终端输入 `prefix` + `Ctrl` + `s` 保存当前的 tmux 的环境，如果保存成功会在 tmux 底部弹出 `Tmux environment saved!`  的提示。
+>
+> ​	当主机重启之后，在 tmux 终端输入 `prefix` + `Ctrl` + `r` 可以恢复上一次保存的 tmux 的环境，如果恢复成功会在 tmux 底部弹出 `Tmux restore complete!`  的提示。
+>
+> 参考资料：
+>
+> - [Tmux Tutorial - Lei Mao](https://leimao.github.io/blog/Tmux-Tutorial/)
+> - [Writing Your tmux Config: a Detailed Guide](https://thevaluable.dev/tmux-config-mouseless/)
+
+- `dstat`
 
 ```bash
 cd ~
@@ -258,3 +289,14 @@ sudo apt-get install dstat
 # e.g. nvme0n1p2 is SSD name
 dstat -ctdD nvme0n1p2 --disk-tps 2
 ```
+
+- `cloc`
+
+```bash
+# count line of code
+sudo apt update
+sudo apt install cloc
+
+cloc . --exclude-dir=path1,[path2] --by-file
+```
+

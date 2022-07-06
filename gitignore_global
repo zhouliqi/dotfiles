@@ -66,3 +66,4 @@ desktop.ini
 */.vscode
 .iml
 *.sublime-workspace
+cmake-build-debug

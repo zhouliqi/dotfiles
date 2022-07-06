@@ -132,6 +132,15 @@ fi
 export http_proxy=http://127.0.0.1:8889
 export https_proxy=http://127.0.0.1:8889
 
+
 # go environment
 export GOROOT=/usr/local/go
 export PATH=$GOROOT/bin:$PATH
+
+
+# rust environment
+. "$HOME/.cargo/env"
+
+
+# ros environment
+source /opt/ros/noetic/setup.bash

@@ -16,3 +16,4 @@ unset file;
 for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
+. "$HOME/.cargo/env"

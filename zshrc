@@ -157,16 +157,23 @@ bindkey "^[[4~" end-of-line
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
 # use proxy
 export http_proxy=http://127.0.0.1:8889
 export https_proxy=http://127.0.0.1:8889
+
 
 # go environment
 export GOROOT=/usr/local/go
 export PATH=$GOROOT/bin:$PATH
 
+
+# Rust environment
+export PATH=$HOME/.cargo/bin:$PATH
+
+
 #================================== ROS ======================================#
-#source /opt/ros/melodic/setup.zsh
+source /opt/ros/noetic/setup.zsh
 #source ~/catkin_ws/devel/setup.zsh
 
 # This is necessary to prevent some Qt-related errors (feel free to try to omit it)
@@ -182,3 +189,10 @@ export PATH=$GOROOT/bin:$PATH
 # export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/PX4-Autopilot/Tools/sitl_gazebo/models
 #export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:~/catkin_ws/src/avoidance/avoidance/sim/models:~/catkin_ws/src/avoidance/avoidance/sim/worlds
 #=============================================================================#
+
+
+# export ROS_MASTER_URI=http://192.168.3.165:11311
+# export ROS_IP=192.168.3.170
+
+#export ROS_MASTER_URI=http://172.20.94.215:11311
+#export ROS_IP=172.20.94.215
