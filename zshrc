@@ -159,8 +159,8 @@ bindkey "^[[4~" end-of-line
 
 
 # use proxy
-export http_proxy=http://127.0.0.1:8889
-export https_proxy=http://127.0.0.1:8889
+export http_proxy=http://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890
 
 
 # go environment
@@ -191,8 +191,6 @@ source /opt/ros/noetic/setup.zsh
 #=============================================================================#
 
 
-# export ROS_MASTER_URI=http://192.168.3.165:11311
-# export ROS_IP=192.168.3.170
-
-#export ROS_MASTER_URI=http://172.20.94.215:11311
-#export ROS_IP=172.20.94.215
+# set ros master ip address
+#export ROS_MASTER_URI=http://192.168.3.165:11311
+#export ROS_IP=192.168.3.170

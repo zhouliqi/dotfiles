@@ -9,10 +9,39 @@ sudo apt update
 sudo apt install snapd
 
 sudo apt update
-sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep dstat
+sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep dstat tree
 
 # ubuntu 18.04 中，ripgrep 可能不能用 apt-get 安装，那么用 snap 安装
 sudo snap install ripgrep --classic
+```
+
+
+
+- Ubuntu 下安装 **Clash for windows** 科学上网（推荐），[参考这里](https://v2xtls.org/clash-for-windows%E9%85%8D%E7%BD%AEtrojan%E6%95%99%E7%A8%8B/)
+
+> 1. 首先前往 [clash_for_windows_pkg](https://github.com/Fndroid/clash_for_windows_pkg) 下载后缀是 [linux.tar.gz](https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.27/Clash.for.Windows-0.19.27-x64-linux.tar.gz) 的包（根据处理器的架构下载对应的包，我的电脑是 x86_64 架构的）
+> 2. 将这个包解压到 `~/Clash` 下，运行 `./cfw` 可以看到最上方有一只小猫，然后点击它打开客户端进行配置
+> 3. 点击 https://v2xtls.org/clash_template2.yaml 下载模板配置文件，然后修改其中的字段。例如我使用的协议是 trojan，我就在其中修改 server 和 password 这两个字段。最后将这个文件拖到 Clash 的 Profiles，选中这个配置文件
+> 4. 代理模式的**绝大多数情况建议使用 Rule**
+> 5. 在 General 中打开 Allow LAN，Mixin 以及 Start with Linux
+> 6. 在主机的 setting -> Network 中的 Network Proxy 选择 Manual，设置 Http 和 Https 的端口号为 Clash 主界面 Port 项的端口，一般是 7890
+> 7. 重启 Clash 后应该就可以科学上网了
+
+**给 Clash for windows 制作桌面图标**
+
+```bash
+# 首先前往 https://zh.m.wikipedia.org/zh/File:Clash_Logo.png 保存 Clash 图标
+
+# 然后运行
+sudo vim /usr/share/applications/Clash.desktop
+
+# 写入下面内容，Exec 和 Icon 填入相应的路径，然后保存即可
+[Desktop Entry]
+Name=Clash
+Exec=/home/zhouliqi/Clash/cfw
+Icon=/home/zhouliqi/Clash/Clash.png
+Type=Application
+StartupNotify=true
 ```
 
 
@@ -89,9 +118,9 @@ cd ~
 git clone git@github.com:zhouliqi/dotfiles.git
 cd dotfiles
 
-# 记得设置终端走代理，不然下载插件的时候可能会失败 (和 Qv2ray 中的端口对应)
-export http_proxy=http://127.0.0.1:8889
-export https_proxy=http://127.0.0.1:8889
+# 记得设置终端走代理，不然下载插件的时候可能会失败 (和 Clash 中的端口对应)
+export http_proxy=http://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890
 
 ./bootstrap.sh
 
@@ -105,9 +134,12 @@ source .zshrc
 ```bash
 # 如果会出现: /usr/bin/env: ‘python’: No such file or directory 
 whereis python3
-# Then we create a symlink to it:
+
+# 那么创建 python3 的符号链接
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
+
+
 
 
 
@@ -273,7 +305,7 @@ tmux source ~/.tmux.conf
 > - [Tmux Tutorial - Lei Mao](https://leimao.github.io/blog/Tmux-Tutorial/)
 > - [Writing Your tmux Config: a Detailed Guide](https://thevaluable.dev/tmux-config-mouseless/)
 
-- `dstat`
+- `dstat` 工具
 
 ```bash
 cd ~
@@ -290,7 +322,7 @@ sudo apt-get install dstat
 dstat -ctdD nvme0n1p2 --disk-tps 2
 ```
 
-- `cloc`
+- `cloc` 代码行数统计工具
 
 ```bash
 # count line of code

@@ -11,7 +11,7 @@
 install_zsh () {
     # Test to see if zshell is installed.  If it is:
     if [ -f /bin/zsh ] || [ -f /usr/bin/zsh ]; then
-    	echo "zsh having been installed!!!"
+        echo "zsh has been installed!!!"
         # Install oh-my-zsh
     	if [ ! -d "$HOME/.oh-my-zsh" ]; then
     		echo "install oh-my-zsh!!!"

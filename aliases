@@ -78,7 +78,12 @@ alias egrep='egrep --color=auto'
 
 
 # tmux
-alias tkill="tmux kill-session"
+alias tkill="tmux kill-session -t"
 alias tnew="tmux new -s"
 alias tatt="tmux attach -t"
 alias tls="tmux ls"
+
+# ros
+alias play="rosbag play -l"
+alias rosecho="rostopic echo"
+alias roshz="rostopic hz"
