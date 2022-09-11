@@ -35,6 +35,8 @@ install_zsh () {
                 sudo apt-get install zsh
                 install_zsh
             fi
+            # Set the default shell to zsh
+            chsh -s "$(which zsh)"
         # If the platform is OS X, tell the user to install zsh :)
         elif [[ $platform == 'Darwin' ]]; then
             echo "Please install zsh, then re-run this script!"

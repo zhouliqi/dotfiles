@@ -114,13 +114,13 @@ git remote add origin [address]
 ## 运行一键迁移脚本
 
 ```bash
-cd ~
-git clone git@github.com:zhouliqi/dotfiles.git
-cd dotfiles
-
 # 记得设置终端走代理，不然下载插件的时候可能会失败 (和 Clash 中的端口对应)
 export http_proxy=http://127.0.0.1:7890
 export https_proxy=http://127.0.0.1:7890
+
+cd ~
+git clone git@github.com:zhouliqi/dotfiles.git
+cd dotfiles
 
 ./bootstrap.sh
 
@@ -189,14 +189,6 @@ sudo apt-get update
 sudo apt-get --only-upgrade install google-chrome-stable
 
 # restart Chrome
-```
-
-
-
-- **Sublime Text**
-
-```bash
-sudo snap install sublime-text --classic
 ```
 
 
