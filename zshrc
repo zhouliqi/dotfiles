@@ -166,6 +166,7 @@ export https_proxy=http://127.0.0.1:7890
 # go environment
 export GOROOT=/usr/local/go
 export PATH=$GOROOT/bin:$PATH
+export GOPATH=$HOME/Documents/golang
 
 
 # Rust environment

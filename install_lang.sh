@@ -32,8 +32,10 @@ install_golang() {
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         cd $HOME/Downloads
     	echo "installing golang"
+        # 如果运行的时候一直不动，则可能是网络问题，建议手动下载 go 的安装包
 		sudo wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
-		sudo tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
+        # 删除之前安装过的 go 版本，然后将 go 安装包解压到 /usr/local
+		sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
     fi
 }
 

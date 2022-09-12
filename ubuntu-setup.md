@@ -27,9 +27,8 @@ sudo snap install ripgrep --classic
 > 6. 在主机的 setting -> Network 中的 Network Proxy 选择 Manual，设置 Http 和 Https 的端口号为 Clash 主界面 Port 项的端口，一般是 7890
 > 7. 重启 Clash 后应该就可以科学上网了
 
-**给 Clash for windows 制作桌面图标**
-
 ```bash
+# 给 Clash for windows 制作桌面图标
 # 首先前往 https://zh.m.wikipedia.org/zh/File:Clash_Logo.png 保存 Clash 图标
 
 # 然后运行
@@ -53,7 +52,7 @@ mkdir ~/v2ray && cd ~/v2ray
 mkdir v2ray-linux-64
 ```
 
-> ​	将 [v2ray](https://github.com/v2ray/v2ray-core/releases/tag/v4.28.2) 的内核文件下载到 `v2ray-linux-64` 目录下；将 [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases/tag/v2.7.0) 客户端下载到 `v2ray` 目录下
+> 将 [v2ray](https://github.com/v2ray/v2ray-core/releases/tag/v4.28.2) 的内核文件下载到 `v2ray-linux-64` 目录下；将 [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases/tag/v2.7.0) 客户端下载到 `v2ray` 目录下
 
 ```bash
 chmod +x Qv2ray-v2.7.0-linux-x64.AppImage
@@ -109,8 +108,6 @@ git remote add origin [address]
 
 
 
-
-
 ## 运行一键迁移脚本
 
 ```bash
@@ -141,9 +138,21 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 
 
 
-
-
 ## Ubuntu 常用的软件
+
+### 安装中文输入法
+
+> ​	在 ubuntu 20.04 以及 ubuntu 22.04 下测试有效，[参考这里](https://blog.csdn.net/a805607966/article/details/105874756)。
+>
+> ​	首先在终端运行 `sudo apt-get install fcitx-googlepinyin`
+>
+> ​	安装完成后打开菜单栏，在应用程序中搜索 language support 并打开。将 Keyboard input method system 切换为 fctix 然后重启电脑。
+>
+> ​	启动 Fcitx，然后在顶部的状态栏中欧你点击键盘图标，选择 Configure 进入配置界面。点击输入方法设置左下角的 `+` 号，进入添加输入方法界面。取消“只显示当前语言”选项的勾选，输入 pinyin 搜索到系统现有的拼音输入法。选择 Google Pinyin 并点击 OK 确认。
+>
+> ​	关闭设置，谷歌输入法配置完成。可以点击右上角状态栏的键盘图片切换到谷歌输入法，切换输入法的快捷键是 ctrl+space，可以在刚关闭的输入方法设置界面里第二项 Global Config 里修改快捷键。
+
+
 
 ### 使用 snap 安装应用
 
@@ -314,13 +323,18 @@ sudo apt-get install dstat
 dstat -ctdD nvme0n1p2 --disk-tps 2
 ```
 
-- `cloc` 代码行数统计工具
+- 代码行数统计工具
 
 ```bash
-# count line of code
+# install cloc command
 sudo apt update
 sudo apt install cloc
 
 cloc . --exclude-dir=path1,[path2] --by-file
+```
+
+```bash
+# install loc (require rust environment)
+cargo install loc
 ```
 
