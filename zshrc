@@ -69,13 +69,13 @@ export UPDATE_ZSH_DAYS=13
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
-	fzf
-	autojump
-	zsh-autosuggestions
-	zsh-completions
-	zsh-history-substring-search
-	zsh-syntax-highlighting
+    git
+    fzf
+    autojump
+    zsh-autosuggestions
+    zsh-completions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # ZPlug configuration
 
 if [[ ! -f $HOME/.zplug/init.zsh ]] {
-	echo "ZPLUG not installed!!!"
+    echo "ZPLUG not installed!!!"
 }
 source ~/.zplug/init.zsh
 
@@ -130,7 +130,7 @@ fi
 zplug load
 
 if [ -f ~/.zshrc_local ]; then
-	source ~/.zshrc_local
+    source ~/.zshrc_local
 fi
 
 # Test if ~/.aliases exists and source it
@@ -140,13 +140,13 @@ fi
 
 AUTOJUMP="$ZSH/custom/plugins/autojump"
 if [[ ! -d ~/.autojump ]] {
-	echo "autojump not installed!!!"
+    echo "autojump not installed!!!"
 }
 
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 if [[ ! -d $HOME/.fzf ]] {
-	echo "fzf not installed!!!"
+    echo "fzf not installed!!!"
 }
 
 # export CLICOLOR=1

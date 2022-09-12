@@ -1,31 +1,31 @@
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
 [user]
-	name = zhouliqi
-	email = zhouliqi1204@gmail.com
+    name = zhouliqi
+    email = zhouliqi1204@gmail.com
 [alias]
-	br = branch
-	ci = commit
-	co = checkout
-	df = diff
-	ds = diff --staged
-	st = status
-	l = log
-	last = log -1 HEAD
-	lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-	lp = log --pretty=oneline
-	sa = stash apply
-	sh = show
-	ss = stash save
-	unstage = reset HEAD --
+    br = branch
+    ci = commit
+    co = checkout
+    df = diff
+    ds = diff --staged
+    st = status
+    l = log
+    last = log -1 HEAD
+    lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    lp = log --pretty=oneline
+    sa = stash apply
+    sh = show
+    ss = stash save
+    unstage = reset HEAD --
 
 
 # Allow local customizations in the .gitconfig_local file
 [include]
-	path = ~/.gitconfig_local
+    path = ~/.gitconfig_local
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore_global
+    editor = vim
+    excludesfile = ~/.gitignore_global
