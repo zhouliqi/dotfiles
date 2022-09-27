@@ -7,7 +7,7 @@ install_rust() {
     printf "\n\t Ready to install rust.\n"
     printf "\n=================================================\n"
 
-    printf "\nDo you want install rust?[Y/n] "
+    printf "\nDo you want install rust? [Y/n] "
     read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         cd ~
@@ -27,7 +27,7 @@ install_golang() {
     printf "\n\t Ready to install golang.\n"
     printf "\n=================================================\n"
 
-    printf "\nDo you want install golang?[Y/n] "
+    printf "\nDo you want install golang? [Y/n] "
     read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         cd $HOME/Downloads

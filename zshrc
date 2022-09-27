@@ -172,6 +172,7 @@ export GOPATH=$HOME/Documents/golang
 # Rust environment
 export PATH=$HOME/.cargo/bin:$PATH
 
+eval "$(zoxide init zsh)"
 
 #================================== ROS ======================================#
 source /opt/ros/noetic/setup.zsh

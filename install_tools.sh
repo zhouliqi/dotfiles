@@ -8,10 +8,16 @@ install_command() {
 
     cd ~
     sudo apt update
-    sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep dstat tree cloc
+    sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep dstat tree cloc exa zoxide duf
     sudo ln -s /usr/bin/python3 /usr/bin/python
 
     sudo snap install ripgrep --classic
+    sudo snap install procs
+
+    # cd ~/Downloads
+    # curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.8/bottom_0.6.8_amd64.deb
+    # sudo dpkg -i bottom_0.6.8_amd64.deb
+    # cd -
 }
 
 
@@ -47,7 +53,7 @@ install_chrome() {
     printf "\n\t Ready to install Chrome.\n"
     printf "\n=================================================\n"
 
-    printf "\nDo you want install chrome?[Y/n] "
+    printf "\nDo you want install chrome? [Y/n] "
     read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         printf "\ninstalling chrome\n"
@@ -69,14 +75,14 @@ install_app() {
     printf "\n\t Ready to install app.\n"
     printf "\n=================================================\n"
 
-    printf "\nDo you want install sublime-text?[Y/n] "
+    printf "\nDo you want install sublime-text? [Y/n] "
     read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         printf "\ninstalling sublime-text\n"
         sudo snap install sublime-text --classic
     fi
 
-    printf "\nDo you want install vs-code?[Y/n] "
+    printf "\nDo you want install vs-code? [Y/n] "
     read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         printf "\ninstalling vs-code\n"
@@ -92,7 +98,7 @@ config_git() {
     printf "\n=================================================\n"
 
     cd ~
-    printf "\nDo you want config git?[Y/n] "
+    printf "\nDo you want config git? [Y/n] "
     read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         # 设置你自己的名字和邮箱

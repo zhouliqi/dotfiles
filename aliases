@@ -36,9 +36,9 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # alias base
 alias v='vim'
-alias ll='ls -aGhlt'
+alias l='exa -alhH --group-directories-first'
+alias ll='exa -abghHliS --group-directories-first'
 alias la='ls -a'
-alias l='ls -CF'
 alias cls='clear'
 alias dc='cd'
 
