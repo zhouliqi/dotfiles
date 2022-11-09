@@ -155,7 +155,7 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 >
 > ​	安装完成后打开菜单栏，在应用程序中搜索 language support 并打开。将 Keyboard input method system 切换为 fctix 然后重启电脑。
 >
-> ​	启动 Fcitx，然后在顶部的状态栏中欧你点击键盘图标，选择 Configure 进入配置界面。点击输入方法设置左下角的 `+` 号，进入添加输入方法界面。取消“只显示当前语言”选项的勾选，输入 pinyin 搜索到系统现有的拼音输入法。选择 Google Pinyin 并点击 OK 确认。
+> ​	启动 Fcitx，然后在顶部的状态栏中点击键盘图标，选择 Configure 进入配置界面。点击输入方法设置左下角的 `+` 号，进入添加输入方法界面。取消“只显示当前语言”选项的勾选，输入 pinyin 搜索到系统现有的拼音输入法。选择 Google Pinyin 并点击 OK 确认。
 >
 > ​	关闭设置，谷歌输入法配置完成。可以点击右上角状态栏的键盘图片切换到谷歌输入法，切换输入法的快捷键是 ctrl+space，可以在刚关闭的输入方法设置界面里第二项 Global Config 里修改快捷键。
 
