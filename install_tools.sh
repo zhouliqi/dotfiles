@@ -8,11 +8,16 @@ install_command() {
 
     cd ~
     sudo apt update
-    sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep dstat tree cloc exa zoxide duf
+    sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep dstat tree cloc zoxide 
     sudo ln -s /usr/bin/python3 /usr/bin/python
 
-    sudo snap install ripgrep --classic
     sudo snap install procs
+
+    # use apt install some command line tool on Ubuntu 22.04
+    version=$(uname -a)
+    if [ "$version" == .*"22\.04".* ]; then
+        sudo apt install exa duf
+    fi
 
     # cd ~/Downloads
     # curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.8/bottom_0.6.8_amd64.deb

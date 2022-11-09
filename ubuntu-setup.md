@@ -2,7 +2,7 @@
 
 ## 准备
 
-- 常用的工具
+### 常用的工具
 
 ```bash
 sudo apt update
@@ -15,7 +15,44 @@ sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep 
 sudo snap install ripgrep --classic
 ```
 
+- 设置 git 和 github
 
+```bash
+# 设置你自己的名字和邮箱
+git config --global user.name "zhouliqi"
+git config --global user.email zhouliqi1204@gmail.com
+
+# 生成 ssh 的密钥，按回车三次
+ssh-keygen -t rsa -b 4096 -C "zhouliqi1204@gmail.com"
+
+# 将下面显示的东西添加到你的 github -> setting -> SSH keys 中
+cat ~/.ssh/id_rsa.pub
+
+# 测试是否可以连接到你的 github 账户
+ssh -T git@github.com
+
+# 删除/添加 github 仓库地址
+git remote rm origin
+git remote add origin [address]
+```
+
+### 科学上网
+
+- 先在 [vultr](https://my.vultr.com/) 上购买一个 VPS，然后登录这个 VPS 安装 Trojan 协议
+
+```bash
+# 搭建 Trojan 服务，安装 Trojan web 管理面板，一键更改 Trojan-Panel 面板端口并设置伪装站点(必须将域名解析到你的 VPS 的 IP 上)
+
+# 1. 安装Curl支持环境
+apt -y install curl  # Debian
+yum -y install curl  # CentOS
+
+# 安装/更新
+source <(curl -sL https://git.io/trojan-install)
+
+# 卸载
+source <(curl -sL https://git.io/trojan-install) --remove
+```
 
 - Ubuntu 下安装 **Clash for windows** 科学上网（推荐），[参考这里](https://v2xtls.org/clash-for-windows%E9%85%8D%E7%BD%AEtrojan%E6%95%99%E7%A8%8B/)
 
@@ -43,16 +80,14 @@ Type=Application
 StartupNotify=true
 ```
 
-
-
-- Ubuntu 下安装 **v2ray** 客户端，科学上网
+- Ubuntu 下安装 **v2ray / Trojan** 客户端
 
 ```bash
 mkdir ~/v2ray && cd ~/v2ray
 mkdir v2ray-linux-64
 ```
 
-> 将 [v2ray](https://github.com/v2ray/v2ray-core/releases/tag/v4.28.2) 的内核文件下载到 `v2ray-linux-64` 目录下；将 [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases/tag/v2.7.0) 客户端下载到 `v2ray` 目录下
+> ​	将 [v2ray](https://github.com/v2ray/v2ray-core/releases/tag/v4.28.2) 的内核文件下载到 `v2ray-linux-64` 目录下；将 [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases/tag/v2.7.0) 客户端下载到 `v2ray` 目录下
 
 ```bash
 chmod +x Qv2ray-v2.7.0-linux-x64.AppImage
@@ -83,32 +118,7 @@ cp QvPlugin-Trojan.v3.0.0.linux-x64.so ~/.config/qv2ray/plugins
 # 重启后就可以在插件下面看到支持 Trojan 协议了,然后再导入 Trojan 链接
 ```
 
-
-
-- 设置 git 和 github
-
-```bash
-# 设置你自己的名字和邮箱
-git config --global user.name "zhouliqi"
-git config --global user.email zhouliqi1204@gmail.com
-
-# 生成 ssh 的密钥，按回车三次
-ssh-keygen -t rsa -b 4096 -C "zhouliqi1204@gmail.com"
-
-# 将下面显示的东西添加到你的 github -> setting -> SSH keys 中
-cat ~/.ssh/id_rsa.pub
-
-# 测试是否可以连接到你的 github 账户
-ssh -T git@github.com
-
-# 删除/添加 github 仓库地址
-git remote rm origin
-git remote add origin [address]
-```
-
-
-
-## 运行一键迁移脚本
+### 运行一键迁移脚本
 
 ```bash
 # 记得设置终端走代理，不然下载插件的时候可能会失败 (和 Clash 中的端口对应)
@@ -123,10 +133,9 @@ cd dotfiles
 
 # 如果 oh-my-zsh 没安装，则先会安装 oh-my-zsh，然后再执行一遍 bootstrap.sh 脚本
 
-source .zshrc
+# 最后执行
+source ~/.zshrc
 ```
-
-
 
 ```bash
 # 如果会出现: /usr/bin/env: ‘python’: No such file or directory 
@@ -135,8 +144,6 @@ whereis python3
 # 那么创建 python3 的符号链接
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
-
-
 
 ## Ubuntu 常用的软件
 
@@ -152,8 +159,6 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 >
 > ​	关闭设置，谷歌输入法配置完成。可以点击右上角状态栏的键盘图片切换到谷歌输入法，切换输入法的快捷键是 ctrl+space，可以在刚关闭的输入方法设置界面里第二项 Global Config 里修改快捷键。
 
-
-
 ### 使用 snap 安装应用
 
 ```bash
@@ -163,8 +168,6 @@ snap info <app name>
 # snapd install app name
 snap install <app name>
 ```
-
-
 
 ### 安装 .dep 文件
 
@@ -177,8 +180,6 @@ sudo apt install ./<package_file>.deb
 # To uninstall a .deb file, remove it using Adept, or type:
 sudo apt-get remove <package_name>
 ```
-
-
 
 ### 常用工具
 
@@ -200,8 +201,6 @@ sudo apt-get --only-upgrade install google-chrome-stable
 # restart Chrome
 ```
 
-
-
 - 安装 **Visual Studio Code**
 
 ```bash
@@ -217,9 +216,7 @@ sudo apt install code
 sudo snap install --classic code
 ```
 
-
-
-- Go 语言环境
+- 安装 Go 语言环境
 
 ```bash
 cd ~
@@ -234,8 +231,6 @@ export PATH=$GOROOT/bin:$PATH
 source ~/.zshrc
 ```
 
-
-
 - 安装 GoLand
 
 ```bash
@@ -244,20 +239,16 @@ cd ~
 sudo tar xzf goland-2020.1.4.tar.gz -C /opt
 ```
 
-
-
-- 截图工具 **FlameShot**
+- 截图工具 **FlameShot** 和录屏工具 **kazam**
 
 ```bash
-sudo apt install flameshot  # Debian, Ubuntu-based distro
+sudo apt install flameshot kazam
 
 # 设置快捷键截图
 # Setting -> Devices -> Keyboard -> +
 # name : Flameshot
 # Commander : flameshot gui
 ```
-
-
 
 - 安装向日葵远程连接后需要配置
 
@@ -270,8 +261,6 @@ sudo apt install lightdm
 # 切换回 gdm3: 执行下面命令，选择 gdm3
 sudo dpkg-reconfigure lightdm
 ```
-
-
 
 ### 终端工具
 
