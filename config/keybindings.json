@@ -1,0 +1,26 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        // 前向搜索
+        "key": "alt+s",
+        "command": "latex-workshop.synctex",
+        "when": "editorTextFocus"
+    },
+    {
+        // 使用默认 recipe 编译
+        "key": "alt+b",
+        "command": "latex-workshop.build",
+        "when": "editorTextFocus"
+    },
+    {
+        // 终止编译
+        "key": "alt+t",
+        "command": "latex-workshop.kill",
+        "when": "editorTextFocus"
+    },
+    {
+        // 选择其他 recipe 编译
+        "key": "alt+e",
+        "command": "latex-workshop.recipes"
+    },
+]

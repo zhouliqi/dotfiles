@@ -211,9 +211,28 @@ wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 sudo apt update
 sudo apt install code
+```
 
-# 2. or use snap to install vscode
-sudo snap install --classic code
+- 安装 ***Sublime Text 4**
+
+```bash
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+
+sudo apt-get update
+sudo apt-get install sublime-text
+```
+
+Sublime Text 4 的无限用户许可：前往 https://hexed.it/；打开文件 `/opt/sublime_text/sublime_text`，在右边的搜索栏查找 ` 80 78 05 00 0F 94 C1`，将它们替换为 `C6 40 05 01 48 85 C9`，然后导出这个文件 `sublime_text`；打开终端，输入以下命令
+
+```bash
+# 保留旧的 sublime_text 文件
+sudo mv /opt/sublime_text/sublime_text /opt/sublime_text/sublime_text.old
+# 进入上一步导出的 sublime_text 的目录
+cd ~/Downloads/
+chmod 755 sublime_text && sudo chown root sublime_text && sudo chgrp root sublime_text
+sudo mv sublime_text /opt/sublime_text/
 ```
 
 - 安装 Go 语言环境
