@@ -43,11 +43,11 @@ git remote add origin [address]
 ```bash
 # 搭建 Trojan 服务，安装 Trojan web 管理面板，一键更改 Trojan-Panel 面板端口并设置伪装站点(必须将域名解析到你的 VPS 的 IP 上)
 
-# 1. 安装Curl支持环境
+# 1. 安装 Curl 支持环境
 apt -y install curl  # Debian
 yum -y install curl  # CentOS
 
-# 安装/更新
+# 安装 / 更新
 source <(curl -sL https://git.io/trojan-install)
 
 # 卸载

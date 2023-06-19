@@ -159,8 +159,8 @@ bindkey "^[[4~" end-of-line
 
 
 # use proxy
-export http_proxy=http://127.0.0.1:7890
-export https_proxy=http://127.0.0.1:7890
+export http_proxy=http://127.0.0.1:8889
+export https_proxy=http://127.0.0.1:8889
 
 
 # go environment
@@ -180,7 +180,7 @@ export MANPATH=/usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH
 
 #================================== ROS ======================================#
-source /opt/ros/noetic/setup.zsh
+#source /opt/ros/noetic/setup.zsh
 #source ~/catkin_ws/devel/setup.zsh
 
 # This is necessary to prevent some Qt-related errors (feel free to try to omit it)
@@ -197,7 +197,23 @@ source /opt/ros/noetic/setup.zsh
 #export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:~/catkin_ws/src/avoidance/avoidance/sim/models:~/catkin_ws/src/avoidance/avoidance/sim/worlds
 #=============================================================================#
 
-
 # set ros master ip address
 #export ROS_MASTER_URI=http://192.168.3.165:11311
 #export ROS_IP=192.168.3.170
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/zhouliqi/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/zhouliqi/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/zhouliqi/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/zhouliqi/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
