@@ -47,10 +47,10 @@ git remote add origin [address]
 apt -y install curl  # Debian
 yum -y install curl  # CentOS
 
-# 安装 / 更新
+# 一键安装 / 更新 Trojan
 source <(curl -sL https://git.io/trojan-install)
 
-# 卸载
+# 卸载 Trojan
 source <(curl -sL https://git.io/trojan-install) --remove
 ```
 
@@ -87,7 +87,7 @@ mkdir ~/v2ray && cd ~/v2ray
 mkdir v2ray-linux-64
 ```
 
-> ​	将 [v2ray](https://github.com/v2ray/v2ray-core/releases/tag/v4.28.2) 的内核文件下载到 `v2ray-linux-64` 目录下；将 [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases/tag/v2.7.0) 客户端下载到 `v2ray` 目录下
+> 将 [v2ray](https://github.com/v2ray/v2ray-core/releases/tag/v4.28.2) 的内核文件下载到 `v2ray-linux-64` 目录下；将 [Qv2ray](https://github.com/Qv2ray/Qv2ray/releases/tag/v2.7.0) 客户端下载到 `v2ray` 目录下；下载 [qv2ray 桌面图标](https://raw.githubusercontent.com/Qv2ray/Qv2ray/master/assets/icons/qv2ray.png)
 
 ```bash
 chmod +x Qv2ray-v2.7.0-linux-x64.AppImage
@@ -95,27 +95,27 @@ chmod +x Qv2ray-v2.7.0-linux-x64.AppImage
 # 创建它的桌面图表
 sudo vim /usr/share/applications/Qv2ray.desktop
 
-# 添加下面内容
+# 添加下面内容（v2ray 前面一部分替换成自己的目录）
 [Desktop Entry]
 Name=Qv2ray
 Exec=/home/zhouliqi/v2ray/Qv2ray-v2.7.0-linux-x64.AppImage
-Icon=/home/zhouliqi/v2ray/v2ray.png
+Icon=/home/zhouliqi/v2ray/qv2ray.png
 Type=Application
 StartupNotify=true
 
 # 然后打开 Qv2ray 客户端，首选项 -> 内核设置 -> v2ray 核心可执行文件路径
-/home/zhouliqi/v2ray/v2ray-linux-64/v2ray
+~/v2ray/v2ray-linux-64/v2ray
 # 首选项 -> 内核设置 -> v2ray 资源目录
-/home/zhouliqi/v2ray/v2ray-linux-64
+~/v2ray/v2ray-linux-64
 
-# 1. 如果使用 vmess 协议, 则可以直接导入 vmess 链接，启动系统代理
+# 1. 如果使用 vmess 协议，则可以直接导入 vmess 链接，启动系统代理
 
-# 2. 如果使用 Trojan 协议, 那么
-# 首先前往: https://github.com/Qv2ray/QvPlugin-Trojan/releases/tag/v3.0.0 下载 linux 下的插件放到顶级 v2ray 目录下, 再运行
+# 2. 如果使用 Trojan 协议，那么
+# 首先前往: https://github.com/Qv2ray/QvPlugin-Trojan/releases/tag/v3.0.0 下载 linux 下的插件放到顶级 v2ray 目录下，再运行
 cd ~/v2ray
 cp QvPlugin-Trojan.v3.0.0.linux-x64.so ~/.config/qv2ray/plugins
 
-# 重启后就可以在插件下面看到支持 Trojan 协议了,然后再导入 Trojan 链接
+# 重启后就可以在插件下面看到支持 Trojan 协议了，然后再导入 Trojan 链接
 ```
 
 ### 运行一键迁移脚本
@@ -149,15 +149,15 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 
 ### 安装中文输入法
 
-> ​	在 ubuntu 20.04 以及 ubuntu 22.04 下测试有效，[参考这里](https://blog.csdn.net/a805607966/article/details/105874756)。
+> 在 ubuntu 20.04 以及 ubuntu 22.04 下测试有效，[参考这里](https://blog.csdn.net/a805607966/article/details/105874756)。
 >
-> ​	首先在终端运行 `sudo apt-get install fcitx-googlepinyin`
+> 首先在终端运行 `sudo apt-get install fcitx-googlepinyin`
 >
-> ​	安装完成后打开菜单栏，在应用程序中搜索 language support 并打开。将 Keyboard input method system 切换为 fctix 然后重启电脑。
+> 安装完成后打开菜单栏，在应用程序中搜索 language support 并打开。将 Keyboard input method system 切换为 fctix 然后重启电脑。
 >
-> ​	启动 Fcitx，然后在顶部的状态栏中点击键盘图标，选择 Configure 进入配置界面。点击输入方法设置左下角的 `+` 号，进入添加输入方法界面。取消“只显示当前语言”选项的勾选，输入 pinyin 搜索到系统现有的拼音输入法。选择 Google Pinyin 并点击 OK 确认。
+> 启动 Fcitx，然后在顶部的状态栏中点击键盘图标，选择 Configure 进入配置界面。点击输入方法设置左下角的 `+` 号，进入添加输入方法界面。取消“只显示当前语言”选项的勾选，输入 pinyin 搜索到系统现有的拼音输入法。选择 Google Pinyin 并点击 OK 确认。
 >
-> ​	关闭设置，谷歌输入法配置完成。可以点击右上角状态栏的键盘图片切换到谷歌输入法，切换输入法的快捷键是 ctrl+space，可以在刚关闭的输入方法设置界面里第二项 Global Config 里修改快捷键。
+> 关闭设置，谷歌输入法配置完成。可以点击右上角状态栏的键盘图片切换到谷歌输入法，切换输入法的快捷键是 ctrl+space，可以在刚关闭的输入方法设置界面里第二项 Global Config 里修改快捷键。
 
 ### 使用 snap 安装应用
 
@@ -213,7 +213,7 @@ sudo apt update
 sudo apt install code
 ```
 
-- 安装 ***Sublime Text 4**
+- 安装 **Sublime Text 4**
 
 ```bash
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
@@ -345,4 +345,108 @@ cloc . --exclude-dir=path1,[path2] --by-file
 # install loc (require rust environment)
 cargo install loc
 ```
+
+## 环境配置
+
+### 编译工具
+
+- 安装 clang
+
+```bash
+sudo apt-get -y install clang
+```
+
+- 设置
+
+```bash
+# 将 clang/clang++ 加入到编译器类型中
+sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
+sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 100
+
+# 手动选择编译器类型（gcc/g++ or clang/clang++）
+sudo update-alternatives --config cc
+sudo update-alternatives --config c++
+```
+
+### 深度学习环境配置
+
+#### 安装显卡驱动
+
+自己完成
+
+#### 安装 CUDA
+
+1. 如果是 Ubuntu 22.04 或者 Ubuntu 22.04 需要降低 `gcc` 和 `g++` 的版本
+
+```bash
+# 在 /etc/apt/sources.list 文件的最后添加源
+sudo vim /etc/apt/sources.list
+
+# 添加 deb [arch=amd64] http://archive.ubuntu.com/ubuntu focal main universe
+sudo apt update
+sudo apt-get -y install gcc-7 g++-7
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50
+sudo update-alternatives  --install /usr/bin/g++ g++ /usr/bin/g++-7 50
+
+sudo update-alternatives --display gcc
+sudo update-alternatives --display g++
+```
+
+2. 前往 [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive) 下载对应版本的 `.run` 文件，例如下载 `10.2` 版本
+
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
+sudo sh cuda_10.2.89_440.33.01_linux.run
+```
+
+执行脚本后，先选择 continue，然后在 CUDA Installer 中取消选中的 Driver，最后输入 accept。
+
+3. 配置环境变量
+
+```bash
+sudo vim ~/.zshrc
+# 添加
+export PATH=/usr/local/cuda-10.2/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64:$LD_LIBRARY_PATH
+
+source ~/.zshrc
+```
+
+4. 查看是否安装成功
+
+```bash
+cat /usr/local/cuda/version.txt
+
+cd /usr/local/cuda-10.2/samples/1_Utilities/deviceQuery
+sudo make
+./deviceQuery
+# 出现相关输出，则 CUDA 安装成功
+```
+
+#### 安装 cuDNN
+
+1. 前往 [cuDNN Download](https://developer.nvidia.com/rdp/cudnn-download) 下载对应的版本
+2. 解压下载的压缩包为 `cuda`，然后运行下面命令
+
+```bash
+cd ~/Downloads
+sudo cp cuda/include/cudnn*.h /usr/local/cuda-10.2/include
+sudo cp cuda/lib/libcudnn* /usr/local/cuda-10.2/lib64
+
+sudo chmod a+r /usr/local/cuda-10.2/include/cudnn*.h
+sudo chmod a+r /usr/local/cuda-10.2/lib64/libcudnn*
+
+# 查看 cuDNN 版本
+cat /usr/local/cuda-10.2/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
+```
+
+至此 CUDN + cuDNN 安装完成，可以执行相关训练文件查看是否有 GPU 信息输出，或监控一下 GPU 状态
+
+```bash
+watch -n 1 nvidia-smi
+```
+
+#### PyTorch 配置
+
+
 

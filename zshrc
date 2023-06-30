@@ -179,41 +179,54 @@ export PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
 export MANPATH=/usr/local/texlive/2022/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2022/texmf-dist/doc/info:$INFOPATH
 
-#================================== ROS ======================================#
-#source /opt/ros/noetic/setup.zsh
-#source ~/catkin_ws/devel/setup.zsh
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 
-# This is necessary to prevent some Qt-related errors (feel free to try to omit it)
-#export QT_X11_NO_MITSHM=1
-
-# Setup some more Gazebo-related environment variables
-#. ~/PX4-Autopilot/Tools/setup_gazebo.bash ~/PX4-Autopilot ~/PX4-Autopilot/build/px4_sitl_default
-
-# Add the Firmware directory to ROS_PACKAGE_PATH so that ROS can start PX4
-#export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/PX4-Autopilot
-
-# set gazebo models location
-# export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/PX4-Autopilot/Tools/sitl_gazebo/models
-#export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:~/catkin_ws/src/avoidance/avoidance/sim/models:~/catkin_ws/src/avoidance/avoidance/sim/worlds
-#=============================================================================#
-
-# set ros master ip address
-#export ROS_MASTER_URI=http://192.168.3.165:11311
-#export ROS_IP=192.168.3.170
+export PATH=$PATH:/opt/FlameGraph
 
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/zhouliqi/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/zhouliqi/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/zhouliqi/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/zhouliqi/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+#=============================================================================#
+# __conda_setup="$('/home/zhouliqi/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/zhouliqi/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/zhouliqi/anaconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/zhouliqi/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+#=============================================================================#
 # <<< conda initialize <<<
+
+
+# CUDA
+# export PATH=/usr/local/cuda-10.2/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64:$LD_LIBRARY_PATH
+
+
+#================================== ROS ======================================#
+# source /opt/ros/noetic/setup.zsh
+# source ~/catkin_ws/devel/setup.zsh
+
+# This is necessary to prevent some Qt-related errors (feel free to try to omit it)
+# export QT_X11_NO_MITSHM=1
+
+# Setup some more Gazebo-related environment variables
+# . ~/PX4-Autopilot/Tools/setup_gazebo.bash ~/PX4-Autopilot ~/PX4-Autopilot/build/px4_sitl_default
+
+# Add the Firmware directory to ROS_PACKAGE_PATH so that ROS can start PX4
+# export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/PX4-Autopilot
+
+# set gazebo models location
+# export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:$HOME/PX4-Autopilot/Tools/sitl_gazebo/models
+# export GAZEBO_MODEL_PATH=${GAZEBO_MODEL_PATH}:~/catkin_ws/src/avoidance/avoidance/sim/models:~/catkin_ws/src/avoidance/avoidance/sim/worlds
+
+# set ros master ip address
+# export ROS_MASTER_URI=http://192.168.3.165:11311
+# export ROS_IP=192.168.3.170
+#=============================================================================#
 

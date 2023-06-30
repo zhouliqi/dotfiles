@@ -52,9 +52,12 @@ printf "\n======================================================================
 install_zsh
 
 
-dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"           # dotfiles directory
-olddir=~/dotfiles_old      # old dotfiles backup directory
+# dotfiles directory
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# old dotfiles backup directory
+olddir=~/dotfiles_old
 echo "$dir"
+
 
 printf "\n==============================================================================================================\n"
 printf "\n\t\t Ready to install plugins.\n"

@@ -8,7 +8,7 @@ install_command() {
 
     cd ~
     sudo apt update
-    sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep dstat tree cloc zoxide 
+    sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep net-tools dstat tree cloc zoxide 
     sudo ln -s /usr/bin/python3 /usr/bin/python
 
     sudo snap install procs

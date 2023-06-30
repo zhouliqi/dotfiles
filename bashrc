@@ -143,4 +143,4 @@ export PATH=$GOROOT/bin:$PATH
 
 
 # ros environment
-source /opt/ros/noetic/setup.bash
+# source /opt/ros/noetic/setup.bash
