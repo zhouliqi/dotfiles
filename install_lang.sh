@@ -2,13 +2,11 @@
 
 
 install_rust() {
-
     printf "\n=================================================\n"
     printf "\n\t Ready to install rust.\n"
     printf "\n=================================================\n"
 
-    printf "\nDo you want install rust? [Y/n] "
-    read flag
+    printf "\nDo you want to install rust? [Y/n] " && read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         cd ~
         # 如果 rust 未安装，则安装它
@@ -27,8 +25,7 @@ install_golang() {
     printf "\n\t Ready to install golang.\n"
     printf "\n=================================================\n"
 
-    printf "\nDo you want install golang? [Y/n] "
-    read flag
+    printf "\nDo you want to install golang? [Y/n] " && read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         cd $HOME/Downloads
         echo "installing golang"

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 
+# Install command line tools that used commonly
 install_command() {
     printf "\n=================================================\n"
     printf "\n\t Ready to install useful command.\n"
@@ -8,7 +9,7 @@ install_command() {
 
     cd ~
     sudo apt update
-    sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep net-tools dstat tree cloc zoxide 
+    sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep net-tools dstat tree cloc zoxide
     sudo ln -s /usr/bin/python3 /usr/bin/python
 
     sudo snap install procs
@@ -26,40 +27,40 @@ install_command() {
 }
 
 
+# Install Clash (Optional)
 install_clash() {
     printf "\n=================================================\n"
     printf "\n\t Ready to install Clash for windows.\n"
     printf "\n=================================================\n"
 
-    cd ~
+    printf "\nDo you want to install chrome? [Y/n] " && read flag
+    if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
+        cd ~
+        wget wget https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.27/Clash.for.Windows-0.19.27-x64-linux.tar.gz Clash.tar.gz
+        tar xzf Clash.for.Windows-0.19.27-x64-linux.tar.gz
+        mv 'Clash for Windows-0.19.27-x64-linux' Clash && cd Clash
+        wget https://upload.wikimedia.org/wikipedia/commons/0/0b/Clash_Logo.png
+        rm Clash.for.Windows-0.19.27-x64-linux.tar.gz
 
-    wget wget https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.27/Clash.for.Windows-0.19.27-x64-linux.tar.gz Clash.tar.gz
-
-    tar xzf Clash.for.Windows-0.19.27-x64-linux.tar.gz
-
-    mv 'Clash for Windows-0.19.27-x64-linux' Clash && cd Clash
-
-    wget https://upload.wikimedia.org/wikipedia/commons/0/0b/Clash_Logo.png
-
-    clash_file="/usr/share/applications/Clash.desktop"
-    sudo touch "$clash_file"
-    echo [Desktop Entry] > $clash_file
-    echo Name=Clash >> $clash_file
-    echo Exec=$HOME/Clash/cfw >> $clash_file
-    echo Icon=$HOME/Clash/Clash.png >> $clash_file
-    echo Type=Application >> $clash_file
-    echo StartupNotify=true >> $clash_file
+        clash_file="/usr/share/applications/Clash.desktop"
+        sudo touch "$clash_file"
+        sudo echo '[Desktop Entry]' > $clash_file
+        sudo echo 'Name=Clash' >> $clash_file
+        sudo echo 'Exec=$HOME/Clash/cfw' >> $clash_file
+        sudo echo 'Icon=$HOME/Clash/Clash.png' >> $clash_file
+        sudo echo 'Type=Application >>' $clash_file
+        sudo echo 'StartupNotify=true' >> $clash_file
+    fi
 }
 
 
-
+# Install Chrome (Optional)
 install_chrome() {
     printf "\n=================================================\n"
     printf "\n\t Ready to install Chrome.\n"
     printf "\n=================================================\n"
 
-    printf "\nDo you want install chrome? [Y/n] "
-    read flag
+    printf "\nDo you want to install chrome? [Y/n] " && read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         printf "\ninstalling chrome\n"
 
@@ -74,37 +75,35 @@ install_chrome() {
 }
 
 
-
-install_app() {
+# Install VS code (Optional)
+install_vscode() {
     printf "\n=================================================\n"
-    printf "\n\t Ready to install app.\n"
+    printf "\n\t Ready to install VScode.\n"
     printf "\n=================================================\n"
 
-    printf "\nDo you want install sublime-text? [Y/n] "
-    read flag
+    printf "\nDo you want to install vscode? [Y/n] "  && read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
-        printf "\ninstalling sublime-text\n"
-        sudo snap install sublime-text --classic
-    fi
+        printf "\ninstalling vscode\n"
 
-    printf "\nDo you want install vs-code? [Y/n] "
-    read flag
-    if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
-        printf "\ninstalling vs-code\n"
-        sudo snap install --classic code
+        sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+        wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+        sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+        rm -f packages.microsoft.gpg
+
+        sudo apt update
+        sudo apt install code
     fi
 }
 
 
-
+# Config your git information (Optional)
 config_git() {
     printf "\n=================================================\n"
     printf "\n\t Ready to config git.\n"
     printf "\n=================================================\n"
 
     cd ~
-    printf "\nDo you want config git? [Y/n] "
-    read flag
+    printf "\nDo you want to config git? [Y/n] " && read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         # 设置你自己的名字和邮箱
         git config --global user.name "zhouliqi"
@@ -133,6 +132,6 @@ export "https_proxy=http://127.0.0.1:7890"
 
 install_chrome
 
-install_app
+install_vscode
 
 config_git
