@@ -3,14 +3,17 @@
 
 # Install command line tools that used commonly
 install_command() {
-    printf "\n=================================================\n"
-    printf "\n\t Ready to install useful command.\n"
-    printf "\n=================================================\n"
+    printf "\n============================================================\n"
+    printf "\n\t Ready to install useful command line tools.\n"
+    printf "\n============================================================\n"
 
     cd ~
     sudo apt update
-    sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep net-tools dstat tree cloc zoxide
+    sudo apt install vim git zsh curl tmux htop tldr make cmake g++ clang-14 python3 ripgrep net-tools dstat tree cloc zoxide
+
     sudo ln -s /usr/bin/python3 /usr/bin/python
+    sudo ln -s /usr/bin/clang-14 /usr/bin/clang
+    sudo ln -s /usr/bin/clang++-14 /usr/bin/clang++
 
     sudo snap install procs
 
@@ -22,8 +25,7 @@ install_command() {
 
     # cd ~/Downloads
     # curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.8/bottom_0.6.8_amd64.deb
-    # sudo dpkg -i bottom_0.6.8_amd64.deb
-    # cd -
+    # sudo apt install ./bottom_0.6.8_amd64.deb
 }
 
 
@@ -117,16 +119,15 @@ config_git() {
     fi
 }
 
-
-
+# 安装常用的命令行工具
 install_command
 
-# 如果 Clash 未安装，则安装它
+# 如果 clash 未安装，则安装它
 if [ ! -d "$HOME/Clash" ]; then
     install_clash
 fi
 
-# Clash 安装完成之后，确保能够科学上网，然后启动它，设置终端代理 (和 Clash 中的端口对应)
+# clash 安装完成之后，确保能够科学上网，然后启动它，设置终端代理 (和 clash 中的端口对应)
 export "http_proxy=http://127.0.0.1:7890"
 export "https_proxy=http://127.0.0.1:7890"
 

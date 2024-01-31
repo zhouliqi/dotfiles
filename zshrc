@@ -157,6 +157,7 @@ bindkey "^[[4~" end-of-line
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+setopt no_nomatch
 
 # use proxy
 export http_proxy=http://127.0.0.1:8889
