@@ -40,3 +40,8 @@ install_golang() {
 install_rust
 
 install_golang
+
+
+printf "\n=================================================\n"
+printf "\n\t Install Finished.\n"
+printf "\n=================================================\n"

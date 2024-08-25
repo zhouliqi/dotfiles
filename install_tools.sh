@@ -35,7 +35,7 @@ install_clash() {
     printf "\n\t Ready to install Clash for windows.\n"
     printf "\n=================================================\n"
 
-    printf "\nDo you want to install chrome? [Y/n] " && read flag
+    printf "\nDo you want to install Clash? [Y/n] " && read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         cd ~
         wget wget https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.27/Clash.for.Windows-0.19.27-x64-linux.tar.gz Clash.tar.gz
@@ -52,6 +52,10 @@ install_clash() {
         sudo echo 'Icon=$HOME/Clash/Clash.png' >> $clash_file
         sudo echo 'Type=Application >>' $clash_file
         sudo echo 'StartupNotify=true' >> $clash_file
+        
+        # clash 安装完成之后，确保能够科学上网，然后启动它，设置终端代理 (和 clash 中的端口对应)
+		export "http_proxy=http://127.0.0.1:7890"
+		export "https_proxy=http://127.0.0.1:7890"
     fi
 }
 
@@ -83,7 +87,7 @@ install_vscode() {
     printf "\n\t Ready to install VScode.\n"
     printf "\n=================================================\n"
 
-    printf "\nDo you want to install vscode? [Y/n] "  && read flag
+    printf "\nDo you want to install vscode? [Y/n] " && read flag
     if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
         printf "\ninstalling vscode\n"
 
@@ -97,28 +101,6 @@ install_vscode() {
     fi
 }
 
-
-# Config your git information (Optional)
-config_git() {
-    printf "\n=================================================\n"
-    printf "\n\t Ready to config git.\n"
-    printf "\n=================================================\n"
-
-    cd ~
-    printf "\nDo you want to config git? [Y/n] " && read flag
-    if [ "$flag" == "Y" ] || [ "$flag" == 'y' ]; then
-        # 设置你自己的名字和邮箱
-        git config --global user.name "zhouliqi"
-        git config --global user.email zhouliqi1204@gmail.com
-
-        # 生成 ssh 的密钥，按回车三次
-        ssh-keygen -t rsa -b 4096 -C "zhouliqi1204@gmail.com"
-
-        # 将下面显示的东西添加到你的 github -> setting -> SSH keys 中
-        cat ~/.ssh/id_rsa.pub
-    fi
-}
-
 # 安装常用的命令行工具
 install_command
 
@@ -127,12 +109,12 @@ if [ ! -d "$HOME/Clash" ]; then
     install_clash
 fi
 
-# clash 安装完成之后，确保能够科学上网，然后启动它，设置终端代理 (和 clash 中的端口对应)
-export "http_proxy=http://127.0.0.1:7890"
-export "https_proxy=http://127.0.0.1:7890"
-
 install_chrome
 
 install_vscode
 
-config_git
+source ~/.zshrc
+
+printf "\n=================================================\n"
+printf "\n\t Useful tools and apps install have finished.\n"
+printf "\n=================================================\n"

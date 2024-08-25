@@ -1,15 +1,13 @@
 # ubuntu 系统设置
 
-## 准备
+## 准备工作
 
 ### 常用的工具
 
 ```bash
 sudo apt update
-sudo apt install snapd
-
-sudo apt update
-sudo apt install vim git zsh curl tmux htop tldr make cmake g++ python3 ripgrep dstat tree
+sudo apt upgrade
+sudo apt install vim git
 
 # ubuntu 18.04 中，ripgrep 可能不能用 apt-get 安装，那么用 snap 安装
 sudo snap install ripgrep --classic
@@ -36,6 +34,8 @@ git remote rm origin
 git remote add origin [address]
 ```
 
+
+
 ### 科学上网
 
 - 先在 [vultr](https://my.vultr.com/) 上购买一个 VPS，然后登录这个 VPS 安装 Trojan 协议
@@ -54,33 +54,7 @@ source <(curl -sL https://git.io/trojan-install)
 source <(curl -sL https://git.io/trojan-install) --remove
 ```
 
-- Ubuntu 下安装 **Clash for windows** 科学上网（推荐），[参考这里](https://v2xtls.org/clash-for-windows%E9%85%8D%E7%BD%AEtrojan%E6%95%99%E7%A8%8B/)
-
-> 1. 首先前往 [clash_for_windows_pkg](https://github.com/Fndroid/clash_for_windows_pkg) 下载后缀是 [linux.tar.gz](https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.27/Clash.for.Windows-0.19.27-x64-linux.tar.gz) 的包（根据处理器的架构下载对应的包，我的电脑是 x86_64 架构的）
-> 2. 将这个包解压到 `~/Clash` 下，运行 `./cfw` 可以看到最上方有一只小猫，然后点击它打开客户端进行配置
-> 3. 点击 https://v2xtls.org/clash_template2.yaml 下载模板配置文件，然后修改其中的字段。例如我使用的协议是 trojan，我就在其中修改 server 和 password 这两个字段。最后将这个文件拖到 Clash 的 Profiles，选中这个配置文件
-> 4. 代理模式的**绝大多数情况建议使用 Rule**
-> 5. 在 General 中打开 Allow LAN，Mixin 以及 Start with Linux
-> 6. 在主机的 setting -> Network 中的 Network Proxy 选择 Manual，设置 Http 和 Https 的端口号为 Clash 主界面 Port 项的端口，一般是 7890
-> 7. 重启 Clash 后应该就可以科学上网了
-
-```bash
-# 给 Clash for windows 制作桌面图标
-# 首先前往 https://zh.m.wikipedia.org/zh/File:Clash_Logo.png 保存 Clash 图标
-
-# 然后运行
-sudo vim /usr/share/applications/Clash.desktop
-
-# 写入下面内容，Exec 和 Icon 填入相应的路径，然后保存即可
-[Desktop Entry]
-Name=Clash
-Exec=/home/zhouliqi/Clash/cfw
-Icon=/home/zhouliqi/Clash/Clash.png
-Type=Application
-StartupNotify=true
-```
-
-- Ubuntu 下安装 **v2ray / Trojan** 客户端
+- Ubuntu 下安装 **v2ray / Trojan** 客户端（推荐）
 
 ```bash
 mkdir ~/v2ray && cd ~/v2ray
@@ -118,12 +92,40 @@ cp QvPlugin-Trojan.v3.0.0.linux-x64.so ~/.config/qv2ray/plugins
 # 重启后就可以在插件下面看到支持 Trojan 协议了，然后再导入 Trojan 链接
 ```
 
-### 运行一键迁移脚本
+- Ubuntu 下安装 **Clash for windows** 科学上网，[参考这里](https://v2xtls.org/clash-for-windows%E9%85%8D%E7%BD%AEtrojan%E6%95%99%E7%A8%8B/)
+
+> 1. 首先前往 [clash_for_windows_pkg](https://github.com/Fndroid/clash_for_windows_pkg) 下载后缀是 [linux.tar.gz](https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.27/Clash.for.Windows-0.19.27-x64-linux.tar.gz) 的包（根据处理器的架构下载对应的包，我的电脑是 x86_64 架构的）
+> 2. 将这个包解压到 `~/Clash` 下，运行 `./cfw` 可以看到最上方有一只小猫，然后点击它打开客户端进行配置
+> 3. 点击 https://v2xtls.org/clash_template2.yaml 下载模板配置文件，然后修改其中的字段。例如我使用的协议是 trojan，我就在其中修改 server 和 password 这两个字段。最后将这个文件拖到 Clash 的 Profiles，选中这个配置文件
+> 4. 代理模式的**绝大多数情况建议使用 Rule**
+> 5. 在 General 中打开 Allow LAN，Mixin 以及 Start with Linux
+> 6. 在主机的 setting -> Network 中的 Network Proxy 选择 Manual，设置 Http 和 Https 的端口号为 Clash 主界面 Port 项的端口，一般是 7890
+> 7. 重启 Clash 后应该就可以科学上网了
+
+```bash
+# 给 Clash for windows 制作桌面图标
+# 首先前往 https://zh.m.wikipedia.org/zh/File:Clash_Logo.png 保存 Clash 图标
+
+# 然后运行
+sudo vim /usr/share/applications/Clash.desktop
+
+# 写入下面内容，Exec 和 Icon 填入相应的路径，然后保存即可
+[Desktop Entry]
+Name=Clash
+Exec=/home/zhouliqi/Clash/cfw
+Icon=/home/zhouliqi/Clash/Clash.png
+Type=Application
+StartupNotify=true
+```
+
+
+
+## 运行一键迁移脚本
 
 ```bash
 # 记得设置终端走代理，不然下载插件的时候可能会失败 (和 Clash 中的端口对应)
-export http_proxy=http://127.0.0.1:7890
-export https_proxy=http://127.0.0.1:7890
+export http_proxy=http://127.0.0.1:8889
+export https_proxy=http://127.0.0.1:8889
 
 cd ~
 git clone git@github.com:zhouliqi/dotfiles.git
@@ -145,6 +147,8 @@ whereis python3
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
 
+
+
 ## Ubuntu 常用的软件
 
 ### 安装中文输入法
@@ -159,6 +163,8 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 >
 > 关闭设置，谷歌输入法配置完成。可以点击右上角状态栏的键盘图片切换到谷歌输入法，切换输入法的快捷键是 ctrl+space，可以在刚关闭的输入方法设置界面里第二项 Global Config 里修改快捷键。
 
+
+
 ### 使用 snap 安装应用
 
 ```bash
@@ -168,6 +174,8 @@ snap info <app name>
 # snapd install app name
 snap install <app name>
 ```
+
+
 
 ### 安装 .dep 文件
 
@@ -180,6 +188,8 @@ sudo apt install ./<package_file>.deb
 # To uninstall a .deb file, remove it using Adept, or type:
 sudo apt-get remove <package_name>
 ```
+
+
 
 ### 常用工具
 
@@ -238,9 +248,9 @@ sudo mv sublime_text /opt/sublime_text/
 - 安装 Go 语言环境
 
 ```bash
-cd ~
-sudo wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
+# download: https://go.dev/dl/
+cd ~/Downloads
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz
 
 vim ~/.zshrc
 
@@ -280,6 +290,8 @@ sudo apt install lightdm
 # 切换回 gdm3: 执行下面命令，选择 gdm3
 sudo dpkg-reconfigure lightdm
 ```
+
+
 
 ### 终端工具
 
