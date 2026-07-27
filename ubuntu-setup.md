@@ -52,6 +52,12 @@ source <(curl -sL https://git.io/trojan-install)
 
 # 卸载 Trojan
 source <(curl -sL https://git.io/trojan-install) --remove
+
+# 如果证书申请失败，检查防火墙： Ubuntu / Debian（UFW）
+sudo ufw status
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw reload
 ```
 
 - Ubuntu 下安装 **v2ray / Trojan** 客户端（推荐）
@@ -205,8 +211,8 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 
 # update Chrome in Ubuntu 20.04
-sudo apt-get update
-sudo apt-get --only-upgrade install google-chrome-stable
+sudo apt update
+sudo apt --only-upgrade install google-chrome-stable
 
 # restart Chrome
 ```
@@ -357,4 +363,23 @@ cloc . --exclude-dir=path1,[path2] --by-file
 # install loc (require rust environment)
 cargo install loc
 ```
+
+## GDB 调试
+
+```bash
+# first, download pretty-printers lib
+svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python
+
+# Add the following to your ~/.gdbinit.
+python
+import sys
+sys.path.insert(0, '/home/zhouliqi/gdb_printers/python')
+from libstdcxx.v6.printers import register_libstdcxx_printers
+register_libstdcxx_printers (None)
+end
+```
+
+- [see here](https://sourceware.org/gdb/wiki/STLSupport)
+
+
 

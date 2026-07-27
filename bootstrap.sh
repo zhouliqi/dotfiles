@@ -74,7 +74,7 @@ for file in $submodules; do
 done
 
 
-files="bashrc bash_profile vimrc vim zshrc gitconfig gitignore_global tmux.conf aliases zplug fzf "$ZSH_PLUG 
+files="aliases bashrc bash_profile gitconfig gitignore_global tmux.conf vimrc vim zshrc zplug fzf gdbinit"$ZSH_PLUG 
 
 
 # create dotfiles_old in homedir

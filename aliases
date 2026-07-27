@@ -50,7 +50,7 @@ alias df="df -h" # -h prints human readable format
 alias vfzf='vim $(fzf)'
 alias cdfzf='cd $(find * -type d | fzf)'
 alias gitfzf='git checkout $(git branch -r | fzf)'
-
+alias rgf='rg --files | rg'
 
 # git aliases
 alias gst='git status'
@@ -77,6 +77,10 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# rg: serach tool
+alias rge='rg -e'
+alias rgf='rg --files | rg'
+alias rgfe='rg --files . | rg -e'
 
 # tmux
 alias tkill="tmux kill-session -t"
